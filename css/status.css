@@ -1,0 +1,15 @@
+.status {
+    display: flex;
+    gap: 20px;
+    padding: 30px 50px;
+  }
+
+  .status-item {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #temp-inside, #drop-inside, #power-out {
+    border-left: 1px solid #ccc;
+  }

@@ -24,9 +24,9 @@ async function updateWeatherWidget() {
         }
 
         const weatherWidget = document.getElementById('weather-widget');
-        
+
         weatherWidget.innerHTML = `
-      <p class="weather-info">${weatherIcon} now ${temperatureCelsius}°C - ${description}</p>
+      <p class="weather-info">${weatherIcon} outside ${temperatureCelsius}°C - ${description}</p>
     `;
     } catch (error) {
         console.error('Error:', error);
