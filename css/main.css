@@ -1,2 +1,6 @@
 @import "fonts.css";
 @import "header.css";
+
+#weather-widget {
+    margin-left: 100px;
+}
