@@ -68,13 +68,17 @@ function updateHumidity() {
 }
 
 decreaseHumidityButton.addEventListener('click', () => {
-    currentHumidity -= 1;
-    updateHumidity();
+    if (currentHumidity > 0) {
+        currentHumidity -= 1;
+        updateHumidity();
+    }
 });
 
 increaseHumidityButton.addEventListener('click', () => {
-    currentHumidity += 1;
-    updateHumidity();
+    if (currentHumidity < 100) {
+        currentHumidity += 1;
+        updateHumidity();
+    }
 });
 
 updateHumidity();
