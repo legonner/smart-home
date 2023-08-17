@@ -82,3 +82,21 @@ increaseHumidityButton.addEventListener('click', () => {
 });
 
 updateHumidity();
+
+const energyUsageElement = document.getElementById('energy-usage');
+const waterUsageElement = document.getElementById('water-usage');
+
+let currentEnergyUsage = 150;
+let currentWaterUsage = 200;
+
+function updateEnergyUsage() {
+    energyUsageElement.textContent = currentEnergyUsage.toString().padStart(7, '0') + ' kW/h';
+}
+
+function updateWaterUsage() {
+    const waterCubicMeters = (currentWaterUsage / 1000).toFixed(2);
+    waterUsageElement.textContent = waterCubicMeters.toString().padStart(8, '0') + ' m³';
+}
+
+updateEnergyUsage();
+updateWaterUsage();
