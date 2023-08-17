@@ -4,6 +4,8 @@
   padding: 0 50px;
   justify-content: center;
   align-items: center;
+  margin: 0 100px;
+  border-bottom: solid 1px;
 }
 
 .status-item {
@@ -47,6 +49,9 @@
 
 .usage-item {
   text-align: center;
+  border-top: solid 1px;
+  border-radius: 10%;
+
 }
 
 .usage-item p {
@@ -61,7 +66,7 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background-color: #464343;
+  background-color: #444444;
 }
 
 .usage-value {
