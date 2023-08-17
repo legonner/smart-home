@@ -1,4 +1,4 @@
-const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=40.7128&lon=-74.0060&appid=f1ae10a3adc804510ad4b24e3ac6f7dc';
+const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=f1ae10a3adc804510ad4b24e3ac6f7dc';
 
 async function updateWeatherWidget() {
     try {
@@ -34,3 +34,47 @@ async function updateWeatherWidget() {
 }
 
 updateWeatherWidget();
+
+const temperatureElement = document.getElementById('temperature');
+const decreaseTempButton = document.getElementById('decrease-temp');
+const increaseTempButton = document.getElementById('increase-temp');
+
+let currentTemperature = 22;
+
+function updateTemperature() {
+    temperatureElement.textContent = currentTemperature.toFixed(1);
+}
+
+decreaseTempButton.addEventListener('click', () => {
+    currentTemperature -= 0.5;
+    updateTemperature();
+});
+
+increaseTempButton.addEventListener('click', () => {
+    currentTemperature += 0.5;
+    updateTemperature();
+});
+
+updateTemperature();
+
+const humidityElement = document.getElementById('humidity');
+const decreaseHumidityButton = document.getElementById('decrease-humidity');
+const increaseHumidityButton = document.getElementById('increase-humidity');
+
+let currentHumidity = 55;
+
+function updateHumidity() {
+    humidityElement.textContent = currentHumidity;
+}
+
+decreaseHumidityButton.addEventListener('click', () => {
+    currentHumidity -= 1;
+    updateHumidity();
+});
+
+increaseHumidityButton.addEventListener('click', () => {
+    currentHumidity += 1;
+    updateHumidity();
+});
+
+updateHumidity();

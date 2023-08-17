@@ -1,15 +1,38 @@
 .status {
-    display: flex;
-    gap: 20px;
-    padding: 30px 50px;
-  }
+  display: flex;
+  gap: 20px;
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+}
 
-  .status-item {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-  }
+.status-item {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
 
-  #temp-inside, #drop-inside, #power-out {
-    border-left: 1px solid #ccc;
-  }
+.temperature {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.temperature-control {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#increase-temp,
+#increase-humidity {
+  padding-bottom: 12px;
+}
+
+.divider {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px;
+  color: #464343;
+}

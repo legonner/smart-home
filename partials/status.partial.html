@@ -1,12 +1,19 @@
 <div class="status">
     <div class="status-item" id="weather-widget"><p></p></div>
-    <div class="status-item"  id="temp-inside">
-        <p><i class="fa-solid fa-temperature-half fa-2xl"></i> inside 23°C </p>
+    <span class="divider"><i class="fa-solid fa-minus fa-rotate-90 fa-2xl"></i></span>
+    <div class="status-item" id="temp-inside">
+        <button class="temperature-control" id="increase-temp"><i class="fas fa-chevron-up"></i></button>
+        <p><i class="fa-solid fa-temperature-half fa-2xl"></i> inside <span id="temperature">23</span>°C </p>
+        <button class="temperature-control" id="decrease-temp"><i class="fas fa-chevron-down"></i></button>
     </div>
-    <div class="status-item"  id="drop-inside">
-        <p><i class="fa-solid fa-droplet fa-2xl"></i> humidity 55%</p>
+    <span class="divider"><i class="fa-solid fa-minus fa-rotate-90 fa-2xl"></i></span>
+    <div class="status-item" id="drop-inside">
+        <button class="temperature-control" id="increase-humidity"><i class="fas fa-chevron-up"></i></button>
+        <p><i class="fa-solid fa-droplet fa-2xl"></i> humidity <span id="humidity">55</span>% </p>
+        <button class="temperature-control" id="decrease-humidity"><i class="fas fa-chevron-down"></i></button>
     </div>
-    <div class="status-item"  id="power-out">
+    <span class="divider"><i class="fa-solid fa-minus fa-rotate-90 fa-2xl"></i></span>
+    <div class="status-item" id="power-out">
         <p><i class="fa-solid fa-bolt fa-2xl"></i> out 150 kW/h</p>
     </div>
 </div>
