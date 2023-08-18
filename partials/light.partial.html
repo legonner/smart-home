@@ -1,4 +1,5 @@
 <div class="light">
+    <span class="divider"><i class="fa-solid fa-minus fa-rotate-90 fa-2xl"></i></span>
     <p class="d-inline-flex gap-1">
         <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Lighting
@@ -6,8 +7,13 @@
     </p>
     <div class="collapse show" id="collapseExample">
         <div class="card card-body">
+            <div>
+                <button class="btn" type="button" id="light-off">
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            </div>
             <div class="light__container">
-                <div class="light__hall">
+                <div class="light__bathroom">
                     <h5>Bathroom</h5>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
@@ -16,7 +22,7 @@
                         <label class="btn btn-outline-dark" for="btncheck7"><i class="far fa-lightbulb fa-2x"></i> <br>Backlight</label>
                     </div>
                 </div>
-                <div class="light__bathroom">
+                <div class="light__hall">
                     <h5>Hall</h5>
                     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
@@ -38,4 +44,5 @@
             </div>
         </div>
     </div>
+    <span class="divider"><i class="fa-solid fa-minus fa-rotate-90 fa-2xl"></i></span>
 </div>

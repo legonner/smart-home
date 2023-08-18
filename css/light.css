@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
 }
 .collapse.show {
     display: block;
@@ -18,7 +19,7 @@
     flex: 1;
 }
 .card {
-    text-align: center;
+    text-align: end;
     padding: 20px;
 }
 .light .btn {
@@ -27,3 +28,15 @@
 .d-inline-flex {
     align-items: center;
 }
+
+.card-body {
+    margin-bottom: 10px;
+}
+
+#light-off {
+    
+    width: 30px;
+    margin: 0;
+    padding: 0;
+}
+
