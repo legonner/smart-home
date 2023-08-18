@@ -1,0 +1,29 @@
+.light {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.collapse.show {
+    display: block;
+}
+.light__container {
+    display: flex;
+    justify-content: center;
+}
+.light__hall,
+.light__bathroom,
+.light__bedroom {
+    text-align: center;
+    margin: 10px; 
+    flex: 1;
+}
+.card {
+    text-align: center;
+    padding: 20px;
+}
+.light .btn {
+    margin-top: 10px;
+}
+.d-inline-flex {
+    align-items: center;
+}
