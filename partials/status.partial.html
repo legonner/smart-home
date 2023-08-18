@@ -2,8 +2,28 @@
     <div class="usage-item">
         <p>Water Usage: <span class="usage-value" id="water-usage">00000200 m³</span></p>
     </div>
+    <div class="usage-alarm">
+        <input type="checkbox" class="btn-check" id="btn-check-alarm" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-alarm">Security alarm system <i class="fa-regular fa-bell-slash"></i></label><br>
+    </div> 
+    <div class="usage-item">
+        <p>Energy Usage: <span class="usage-value" id="energy-usage">0000150 kW/h</span></p>
+    </div>
+</div>
+
+<div class="dashboard">
     <div class="usage-toolbar">
-        <p class="dashboard-title">Status Dashboard</p>
+        <div class="dashboard-status">
+            <div class="usage-flood">
+                <input type="checkbox" class="btn-check" id="btn-check-flood" autocomplete="off" checked>
+                <label class="btn btn-outline-success" for="btn-check-flood">Flood sensor <i class="fa-regular fa-circle-check"></i></label><br>
+            </div> 
+            <p class="dashboard-title">Status Dashboard</p>
+            <div class="usage-fire">
+                <input type="checkbox" class="btn-check" id="btn-check-fire" autocomplete="off" checked>
+                <label class="btn btn-outline-success" for="btn-check-fire">Fire sensor <i class="fa-regular fa-circle-check"></i></label><br>
+            </div>   
+        </div>
         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
             <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
             <label class="btn btn-outline-dark" for="btncheck1"><i class="fa-solid fa-house-lock fa-lg"></i></label>
@@ -14,9 +34,6 @@
             <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
             <label class="btn btn-outline-dark" for="btncheck3"><i class="fa-solid fa-battery-quarter fa-lg"></i></label>
           </div>
-    </div>
-    <div class="usage-item">
-        <p>Energy Usage: <span class="usage-value" id="energy-usage">0000150 kW/h</span></p>
     </div>
 </div>
 

@@ -100,3 +100,48 @@ function updateWaterUsage() {
 
 updateEnergyUsage();
 updateWaterUsage();
+
+const checkboxAlarm = document.getElementById('btn-check-alarm');
+    const labelAlarm = document.querySelector('.usage-alarm .btn');
+
+    checkboxAlarm.addEventListener('change', function() {
+        if (this.checked) {
+            labelAlarm.innerHTML = 'Security alarm system <i class="fa-solid fa-shield"></i>';
+            labelAlarm.classList.remove('btn-outline-secondary');
+            labelAlarm.classList.add('btn-outline-success');
+        } else {
+            labelAlarm.innerHTML = 'Security alarm system <i class="fa-regular fa-bell-slash"></i>';
+            labelAlarm.classList.remove('btn-outline-success');
+            labelAlarm.classList.add('btn-outline-secondary');
+        }
+    });
+
+const checkboxFlood = document.getElementById('btn-check-flood');
+const labelFlood = document.querySelector('.usage-flood .btn');
+
+checkboxFlood.addEventListener('change', function() {
+    if (this.checked) {
+        labelFlood.innerHTML = 'Flood sensor <i class="fa-regular fa-circle-check"></i>';
+        labelFlood.classList.remove('btn-outline-secondary');
+        labelFlood.classList.add('btn-outline-success');
+    } else {
+        labelFlood.innerHTML = 'Flood sensor <i class="fa-regular fa-circle-xmark"></i>';
+        labelFlood.classList.remove('btn-outline-success');
+        labelFlood.classList.add('btn-outline-secondary');
+    }
+});
+
+const checkboxFire = document.getElementById('btn-check-fire');
+const labelFire = document.querySelector('.usage-fire .btn');
+
+checkboxFire.addEventListener('change', function() {
+    if (this.checked) {
+        labelFire.innerHTML = 'Fire sensor <i class="fa-regular fa-circle-check"></i>';
+        labelFire.classList.remove('btn-outline-secondary');
+        labelFire.classList.add('btn-outline-success');
+    } else {
+        labelFire.innerHTML = 'Fire sensor <i class="fa-regular fa-circle-xmark"></i>';
+        labelFire.classList.remove('btn-outline-success');
+        labelFire.classList.add('btn-outline-secondary');
+    }
+});

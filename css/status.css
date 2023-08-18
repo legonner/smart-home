@@ -1,3 +1,16 @@
+.status-swich {
+  display: flex;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.dashboard-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px 0 50px;
+}
+
 .status {
   display: flex;
   gap: 20px;
