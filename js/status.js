@@ -58,6 +58,7 @@ updateValue('temperature', currentTemperature.toFixed(1));
 
 const decreaseHumidityButton = document.getElementById('decrease-humidity');
 const increaseHumidityButton = document.getElementById('increase-humidity');
+
 let currentHumidity = 55;
 
 decreaseHumidityButton.addEventListener('click', () => {
@@ -80,7 +81,7 @@ let currentEnergyUsage = 150;
 let currentWaterUsage = 200;
 
 function updateEnergyUsage() {
-    updateValue('energy-usage', currentEnergyUsage.toString().padStart(7, '0') + ' kW/h');
+    updateValue('energy-usage', currentEnergyUsage.toFixed().padStart(7, '0') + ' kW/h');
 }
 
 function updateWaterUsage() {
@@ -91,7 +92,7 @@ function updateWaterUsage() {
 function increaseEnergyUsage() {
     const checkedCheckboxes = document.querySelectorAll('.light__container .btn-check:checked');
     const checkedCount = checkedCheckboxes.length;
-    currentEnergyUsage += checkedCount;
+    currentEnergyUsage += checkedCount / 3;
     updateEnergyUsage();
 }
 
