@@ -35,113 +35,84 @@ async function updateWeatherWidget() {
 
 updateWeatherWidget();
 
-const temperatureElement = document.getElementById('temperature');
+function updateValue(elementId, value) {
+    const element = document.getElementById(elementId);
+    element.textContent = value;
+}
+
 const decreaseTempButton = document.getElementById('decrease-temp');
 const increaseTempButton = document.getElementById('increase-temp');
-
 let currentTemperature = 22;
-
-function updateTemperature() {
-    temperatureElement.textContent = currentTemperature.toFixed(1);
-}
 
 decreaseTempButton.addEventListener('click', () => {
     currentTemperature -= 0.5;
-    updateTemperature();
+    updateValue('temperature', currentTemperature.toFixed(1));
 });
 
 increaseTempButton.addEventListener('click', () => {
     currentTemperature += 0.5;
-    updateTemperature();
+    updateValue('temperature', currentTemperature.toFixed(1));
 });
 
-updateTemperature();
+updateValue('temperature', currentTemperature.toFixed(1));
 
-const humidityElement = document.getElementById('humidity');
 const decreaseHumidityButton = document.getElementById('decrease-humidity');
 const increaseHumidityButton = document.getElementById('increase-humidity');
-
 let currentHumidity = 55;
-
-function updateHumidity() {
-    humidityElement.textContent = currentHumidity;
-}
 
 decreaseHumidityButton.addEventListener('click', () => {
     if (currentHumidity > 0) {
         currentHumidity -= 1;
-        updateHumidity();
+        updateValue('humidity', currentHumidity);
     }
 });
 
 increaseHumidityButton.addEventListener('click', () => {
     if (currentHumidity < 100) {
         currentHumidity += 1;
-        updateHumidity();
+        updateValue('humidity', currentHumidity);
     }
 });
 
-updateHumidity();
-
-const energyUsageElement = document.getElementById('energy-usage');
-const waterUsageElement = document.getElementById('water-usage');
+updateValue('humidity', currentHumidity);
 
 let currentEnergyUsage = 150;
 let currentWaterUsage = 200;
 
 function updateEnergyUsage() {
-    energyUsageElement.textContent = currentEnergyUsage.toString().padStart(7, '0') + ' kW/h';
+    updateValue('energy-usage', currentEnergyUsage.toString().padStart(7, '0') + ' kW/h');
 }
 
 function updateWaterUsage() {
     const waterCubicMeters = (currentWaterUsage / 1000).toFixed(2);
-    waterUsageElement.textContent = waterCubicMeters.toString().padStart(8, '0') + ' m³';
+    updateValue('water-usage', waterCubicMeters.toString().padStart(8, '0') + ' m³');
+}
+
+function increaseEnergyUsage() {
+    const checkedCheckboxes = document.querySelectorAll('.light__container .btn-check:checked');
+    const checkedCount = checkedCheckboxes.length;
+    currentEnergyUsage += checkedCount;
+    updateEnergyUsage();
 }
 
 updateEnergyUsage();
 updateWaterUsage();
 
-const checkboxAlarm = document.getElementById('btn-check-alarm');
-    const labelAlarm = document.querySelector('.usage-alarm .btn');
+setInterval(increaseEnergyUsage, 2000);
 
-    checkboxAlarm.addEventListener('change', function() {
-        if (this.checked) {
-            labelAlarm.innerHTML = 'Security alarm system <i class="fa-solid fa-shield"></i>';
-            labelAlarm.classList.remove('btn-outline-secondary');
-            labelAlarm.classList.add('btn-outline-success');
-        } else {
-            labelAlarm.innerHTML = 'Security alarm system <i class="fa-regular fa-bell-slash"></i>';
-            labelAlarm.classList.remove('btn-outline-success');
-            labelAlarm.classList.add('btn-outline-secondary');
-        }
+function updateCheckboxLabel(checkboxId, labelClass, checkedText, uncheckedText, successClass, secondaryClass) {
+    const checkbox = document.getElementById(checkboxId);
+    const label = document.querySelector(labelClass);
+
+    checkbox.addEventListener('change', function() {
+        const isChecked = this.checked;
+        label.innerHTML = isChecked ? checkedText : uncheckedText;
+        label.classList.toggle(successClass, isChecked);
+        label.classList.toggle(secondaryClass, !isChecked);
     });
+}
 
-const checkboxFlood = document.getElementById('btn-check-flood');
-const labelFlood = document.querySelector('.usage-flood .btn');
+updateCheckboxLabel('btn-check-alarm', '.usage-alarm .btn', 'Security alarm system <i class="fa-solid fa-shield"></i>', 'Security alarm system <i class="fa-regular fa-bell-slash"></i>', 'btn-outline-success', 'btn-outline-secondary');
+updateCheckboxLabel('btn-check-flood', '.usage-flood .btn', 'Flood sensor <i class="fa-regular fa-circle-check"></i>', 'Flood sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
+updateCheckboxLabel('btn-check-fire', '.usage-fire .btn', 'Fire sensor <i class="fa-regular fa-circle-check"></i>', 'Fire sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
 
-checkboxFlood.addEventListener('change', function() {
-    if (this.checked) {
-        labelFlood.innerHTML = 'Flood sensor <i class="fa-regular fa-circle-check"></i>';
-        labelFlood.classList.remove('btn-outline-secondary');
-        labelFlood.classList.add('btn-outline-success');
-    } else {
-        labelFlood.innerHTML = 'Flood sensor <i class="fa-regular fa-circle-xmark"></i>';
-        labelFlood.classList.remove('btn-outline-success');
-        labelFlood.classList.add('btn-outline-secondary');
-    }
-});
-
-const checkboxFire = document.getElementById('btn-check-fire');
-const labelFire = document.querySelector('.usage-fire .btn');
-
-checkboxFire.addEventListener('change', function() {
-    if (this.checked) {
-        labelFire.innerHTML = 'Fire sensor <i class="fa-regular fa-circle-check"></i>';
-        labelFire.classList.remove('btn-outline-secondary');
-        labelFire.classList.add('btn-outline-success');
-    } else {
-        labelFire.innerHTML = 'Fire sensor <i class="fa-regular fa-circle-xmark"></i>';
-        labelFire.classList.remove('btn-outline-success');
-        labelFire.classList.add('btn-outline-secondary');
-    }
-});

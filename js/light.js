@@ -33,3 +33,4 @@ lightOffButton.addEventListener('click', () => {
     });
     updateBadge();
 });
+
