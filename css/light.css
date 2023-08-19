@@ -34,9 +34,12 @@
 }
 
 #light-off {
-    
     width: 30px;
     margin: 0;
     padding: 0;
+    border: solid 1px;
 }
 
+#add-el {
+    width: 50px;
+}
