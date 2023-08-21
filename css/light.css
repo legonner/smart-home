@@ -12,6 +12,16 @@
     justify-content: center;
 }
 
+.light__container .btn-group label {
+    width: 100px;
+}
+
+.light__container .btn-group button {
+    padding: 0;
+    margin: 0;
+    width: 30px;
+}
+
 .light__hall,
 .light__bathroom,
 .light__bedroom {
@@ -41,10 +51,30 @@
     border: solid 1px;
 }
 
-#add-el {
+#edit-light-el {
     display: block;
     padding: 0;
     margin: auto;
     width: 60px;
     height: 30px;
 }
+
+#add-light-item {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.remove-light-item {
+    width: 40px;
+    height: 30px;
+}
+
+.edit-button {
+    display: grid;
+    grid-template-columns: repeat(2, auto); 
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+  }
