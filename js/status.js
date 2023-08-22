@@ -79,6 +79,7 @@ updateValue('humidity', currentHumidity);
 
 let currentEnergyUsage = 150;
 let currentWaterUsage = 200;
+let currentEnergyConsumption = 0;
 
 function updateEnergyUsage() {
     updateValue('energy-usage', currentEnergyUsage.toFixed().padStart(7, '0') + ' kW/h');
@@ -92,12 +93,19 @@ function updateWaterUsage() {
 function increaseEnergyUsage() {
     const checkedCheckboxes = document.querySelectorAll('.light__container .btn-check:checked');
     const checkedCount = checkedCheckboxes.length;
-    currentEnergyUsage += checkedCount / 3;
+    currentEnergyConsumption = checkedCount / 3;
+    currentEnergyUsage += currentEnergyConsumption;
     updateEnergyUsage();
+}
+function updateEnergyConsumption() {
+    const energyConsumptionElement = document.getElementById('energy-consumption');
+    energyConsumptionElement.textContent = currentEnergyConsumption.toFixed(1);
 }
 
 updateEnergyUsage();
 updateWaterUsage();
+
+setInterval(updateEnergyConsumption, 500);
 
 setInterval(increaseEnergyUsage, 2000);
 
