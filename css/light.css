@@ -67,13 +67,14 @@
 }
 
 .remove-light-item {
-    width: 40px;
-    height: 30px;
+    display: block;
+
+    height: 25px;
+    margin: auto !important;
 }
 
 .edit-button {
     display: grid;
-    grid-template-columns: repeat(2, auto); 
     justify-content: center;
     align-items: center;
     gap: 20px; 
