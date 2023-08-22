@@ -1,0 +1,17 @@
+.climate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.climate-container {
+    display: flex;
+    gap: 20px;
+}
+
+.climate-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
