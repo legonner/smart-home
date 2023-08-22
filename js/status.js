@@ -1,36 +1,54 @@
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=f1ae10a3adc804510ad4b24e3ac6f7dc';
+let weatherData = null;
 
-async function updateWeatherWidget() {
+const weatherIcons = {
+    clouds: '<i class="fa-solid fa-cloud fa-xl"></i>',
+    clear: '<i class="fa-solid fa-sun fa-xl"></i>',
+    rain: '<i class="fa-solid fa-cloud-rain fa-xl"></i>',
+    mist: '<i class="fa-solid fa-smog fa-xl"></i>',
+    smoke: '<i class="fa-solid fa-smog fa-xl"></i>',
+    haze: '<i class="fa-solid fa-smog fa-xl"></i>',
+    dust: '<i class="fa-solid fa-smog fa-xl"></i>',
+    fog: '<i class="fa-solid fa-smog fa-xl"></i>',
+    snow: '<i class="fa-regular fa-snowflake fa-xl"></i>',
+    drizzle: '<i class="fa-solid fa-cloud-rain fa-xl"></i>',
+    thunderstorm: '<i class="fa-solid fa-cloud-bolt fa-xl"></i>'
+};
+
+async function fetchWeatherData() {
     try {
         const response = await fetch(apiUrl);
-        const weather = await response.json();
+        weatherData = await response.json();
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
 
-        const temperatureCelsius = Math.round(weather.main.temp - 273.15);
-        const description = weather.weather[0].description;
-        let weatherIcon = '';
+async function updateWeatherWidget() {
+    if (!weatherData) {
+        await fetchWeatherData();
+    }
 
-        if (description.includes('clouds')) {
-            weatherIcon = '<i class="fa-solid fa-cloud fa-xl"></i>';
-        } else if (description.includes('clear')) {
-            weatherIcon = '<i class="fa-solid fa-sun fa-xl"></i>';
-        } else if (description.includes('rain') || description.includes('drizzle')) {
-            weatherIcon = '<i class="fa-solid fa-cloud-rain fa-xl"></i>';
-        } else if (description.includes('mist') || description.includes('fog') || description.includes('haze') || description.includes('smoke') || description.includes('dust')) {
-            weatherIcon = '<i class="fa-solid fa-smog fa-xl"></i>';
-        } else if (description.includes('snow')) {
-            weatherIcon = '<i class="fa-regular fa-snowflake fa-xl"></i>';
-        } else if (description.includes('thunderstorm')) {
-            weatherIcon = '<i class="fa-solid fa-cloud-bolt fa-xl"></i>';
-        }
+    if (weatherData) {
+        const temperatureCelsius = Math.round(weatherData.main.temp - 273.15);
+        const description = weatherData.weather[0].description;
+        const weatherIcon = getWeatherIcon(description);
 
         const weatherWidget = document.getElementById('weather-widget');
 
         weatherWidget.innerHTML = `
-      <p class="weather-info">${weatherIcon} outside ${temperatureCelsius}°C - ${description}</p>
-    `;
-    } catch (error) {
-        console.error('Error:', error);
+            <p class="weather-info">${weatherIcon} outside ${temperatureCelsius}°C - ${description}</p>
+        `;
     }
+}
+
+function getWeatherIcon(description) {
+    for (const [key, icon] of Object.entries(weatherIcons)) {
+        if (description.includes(key)) {
+            return icon;
+        }
+    }
+    return '';
 }
 
 updateWeatherWidget();
@@ -40,18 +58,28 @@ function updateValue(elementId, value) {
     element.textContent = value;
 }
 
+function handleTemperatureChange(change) {
+    currentTemperature += change;
+    updateValue('temperature', currentTemperature.toFixed(1));
+}
+
+function handleHumidityChange(change) {
+    if (currentHumidity + change >= 0 && currentHumidity + change <= 100) {
+        currentHumidity += change;
+        updateValue('humidity', currentHumidity);
+    }
+}
+
 const decreaseTempButton = document.getElementById('decrease-temp');
 const increaseTempButton = document.getElementById('increase-temp');
 let currentTemperature = 22;
 
 decreaseTempButton.addEventListener('click', () => {
-    currentTemperature -= 0.5;
-    updateValue('temperature', currentTemperature.toFixed(1));
+    handleTemperatureChange(-0.5);
 });
 
 increaseTempButton.addEventListener('click', () => {
-    currentTemperature += 0.5;
-    updateValue('temperature', currentTemperature.toFixed(1));
+    handleTemperatureChange(0.5);
 });
 
 updateValue('temperature', currentTemperature.toFixed(1));
@@ -62,17 +90,11 @@ const increaseHumidityButton = document.getElementById('increase-humidity');
 let currentHumidity = 55;
 
 decreaseHumidityButton.addEventListener('click', () => {
-    if (currentHumidity > 0) {
-        currentHumidity -= 1;
-        updateValue('humidity', currentHumidity);
-    }
+    handleHumidityChange(-1);
 });
 
 increaseHumidityButton.addEventListener('click', () => {
-    if (currentHumidity < 100) {
-        currentHumidity += 1;
-        updateValue('humidity', currentHumidity);
-    }
+    handleHumidityChange(1);
 });
 
 updateValue('humidity', currentHumidity);
@@ -97,6 +119,7 @@ function increaseEnergyUsage() {
     currentEnergyUsage += currentEnergyConsumption;
     updateEnergyUsage();
 }
+
 function updateEnergyConsumption() {
     const energyConsumptionElement = document.getElementById('energy-consumption');
     energyConsumptionElement.textContent = currentEnergyConsumption.toFixed(1);
@@ -106,7 +129,6 @@ updateEnergyUsage();
 updateWaterUsage();
 
 setInterval(updateEnergyConsumption, 500);
-
 setInterval(increaseEnergyUsage, 2000);
 
 function updateCheckboxLabel(checkboxId, labelClass, checkedText, uncheckedText, successClass, secondaryClass) {
@@ -124,4 +146,3 @@ function updateCheckboxLabel(checkboxId, labelClass, checkedText, uncheckedText,
 updateCheckboxLabel('btn-check-alarm', '.usage-alarm .btn', 'Security alarm system <i class="fa-solid fa-shield"></i>', 'Security alarm system <i class="fa-regular fa-bell-slash"></i>', 'btn-outline-success', 'btn-outline-secondary');
 updateCheckboxLabel('btn-check-flood', '.usage-flood .btn', 'Flood sensor <i class="fa-regular fa-circle-check"></i>', 'Flood sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
 updateCheckboxLabel('btn-check-fire', '.usage-fire .btn', 'Fire sensor <i class="fa-regular fa-circle-check"></i>', 'Fire sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
-
