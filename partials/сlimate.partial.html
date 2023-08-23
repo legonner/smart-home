@@ -8,9 +8,36 @@
     </p>
     <div class="collapse show" id="collapseExample1">
         <div class="card card-body">
-            <div class="climate-auto-mode d-flex justify-content-center mb-3">
-                <input type="checkbox" class="btn-check" id="btn-check-security-alarm" autocomplete="off">
-                <label class="btn btn-outline-secondary" for="btn-check-security-alarm">AUTO</label><br>
+            <div class="climate-auto-mode">
+                <input type="checkbox" class="btn-check" id="btn-check-auto-mode" autocomplete="off">
+                <label class="btn btn-outline-success" for="btn-check-auto-mode">AUTO</label><br>
+                <button id="auto-mode-settings" class="btn btn-emphasis" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseAutoSettings" aria-expanded="false" aria-controls="collapseAutoSettings">
+                    <i class="fa-solid fa-gears"></i>
+                </button>
+            </div>
+            <div class="collapse" id="collapseAutoSettings">
+                <div class="card card-body p-0 ">
+                    <div class="climate-auto-settings">
+                        <div class="status-item" id="user-min-temperature">
+                            <button class="temperature-control" id="increase-temp"><i
+                                    class="fas fa-chevron-up"></i></button>
+                            <p><i class="fa-solid fa-temperature-quarter fa-2xl"></i> min <span
+                                    id="user-min-temp">20</span>°C </p>
+                            <button class="temperature-control" id="decrease-temp"><i
+                                    class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="status-item" id="user-max-temperature">
+                            <button class="temperature-control" id="increase-temp"><i
+                                    class="fas fa-chevron-up"></i></button>
+                            <p><i class="fa-solid fa-temperature-three-quarters fa-2xl"></i> max <span
+                                    id="user-max-temp">24</span>°C </p>
+                            <button class="temperature-control" id="decrease-temp"><i
+                                    class="fas fa-chevron-down"></i></button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="climate-controls">
                 <div class="card text-center">
@@ -135,7 +162,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-secondary" id="settings-btn" data-bs-toggle="collapse"
+            <button class="btn btn-outline-dark" id="settings-btn" data-bs-toggle="collapse"
                 data-bs-target="#collapseClimateModes" role="button" aria-expanded="false"
                 aria-controls="collapseClimateModes">
                 Settings

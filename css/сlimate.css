@@ -21,3 +21,30 @@
     margin: auto;
     margin-top: 20px;
 }
+
+.climate-auto-settings {
+    display: flex;
+    gap: 20px;
+}
+
+.climate-auto-mode {
+    display: flex;
+    justify-content: center !important;
+    align-items: center; 
+    gap: 5px; 
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.climate-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+#auto-mode-settings {
+    padding: 0;
+    margin: 0;
+    height: 25px;
+    width: 25px;
+}
