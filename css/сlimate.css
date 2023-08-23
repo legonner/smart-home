@@ -15,3 +15,9 @@
     justify-content: center;
     gap: 20px;
 }
+
+#settings-btn {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+}

@@ -2,46 +2,144 @@
     <p class="d-inline-flex gap-1">
         <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1"
             aria-expanded="false" aria-controls="collapseExample1">
-            Climate control 
+            Climate control
             <span class="badge text-bg-primary"> <i class="fa-solid fa-fan fa-spin fa-xl"></i> </span>
         </button>
     </p>
     <div class="collapse show" id="collapseExample1">
         <div class="card card-body">
+            <div class="climate-auto-mode d-flex justify-content-center mb-3">
+                <input type="checkbox" class="btn-check" id="btn-check-security-alarm" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="btn-check-security-alarm">AUTO</label><br>
+            </div>
             <div class="climate-controls">
                 <div class="card text-center">
                     <div class="card-header">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="climateRadio1" id="climateRadio1" autocomplete="off">
+                            <input type="radio" class="btn-check" name="climateRadio1" id="climateRadio1"
+                                autocomplete="off">
                             <label class="btn btn-outline-dark" for="climateRadio1">on</label>
-                          
-                            <input type="radio" class="btn-check" name="climateRadio1" id="climateRadio2" autocomplete="off" checked>
+
+                            <input type="radio" class="btn-check" name="climateRadio1" id="climateRadio2"
+                                autocomplete="off" checked>
                             <label class="btn btn-outline-dark" for="climateRadio2">off</label>
                         </div>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa-solid fa-fan fa-xl"></i> Air conditioning</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-dark">Go somewhere</a>
+                        <p class="card-text">Temperature control system for indoor comfort.</p>
+                        <div class="collapse" id="collapseClimateModes">
+                            <div class="card card-body">
+                                <div class="btn-group" role="group" aria-label="Climate Mode Radio Buttons">
+                                    <input type="radio" class="btn-check" name="climateModeRadio"
+                                        id="climateModeRadioCool" autocomplete="off" checked>
+                                    <label class="btn btn-outline-dark" for="climateModeRadioCool">Cool</label>
+
+                                    <input type="radio" class="btn-check" name="climateModeRadio"
+                                        id="climateModeRadioDry" autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="climateModeRadioDry">Dry</label>
+
+                                    <input type="radio" class="btn-check" name="climateModeRadio"
+                                        id="climateModeRadioHeat" autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="climateModeRadioHeat">Heat</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card text-center">
                     <div class="card-header">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="climateRadio2" id="climateRadio3" autocomplete="off">
+                            <input type="radio" class="btn-check" name="climateRadio2" id="climateRadio3"
+                                autocomplete="off">
                             <label class="btn btn-outline-dark" for="climateRadio3">on</label>
-                          
-                            <input type="radio" class="btn-check" name="climateRadio2" id="climateRadio4" autocomplete="off" checked>
+
+                            <input type="radio" class="btn-check" name="climateRadio2" id="climateRadio4"
+                                autocomplete="off" checked>
                             <label class="btn btn-outline-dark" for="climateRadio4">off</label>
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"> <i class="fa-solid fa-fire-flame-simple fa-xl"></i> Heating boiler</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-dark">Go somewhere</a>
+                        <h5 class="card-title"> <i class="fa-solid fa-fire fa-xl"></i> Heating boiler</h5>
+                        <p class="card-text">Temperature control system for indoor comfort.</p>
+                        <div class="heating-boiler-control">
+                            <div class="collapse" id="collapseClimateModes">
+                                <div class="card card-body">
+                                    <p>
+                                        <i class="fa-solid fa-faucet fa-xl"></i>
+                                    </p>
+                                    <div class="btn-group" role="group" aria-label="Climate Mode Radio Buttons">
+                                        <input type="radio" class="btn-check" name="climateModeRadioWaterHeating"
+                                            id="climateModeRadioCoolWaterHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioCoolWaterHeating">1</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioWaterHeating"
+                                            id="climateModeRadioDryWaterHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioDryWaterHeating">2</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioWaterHeating"
+                                            id="climateModeRadioHeatWaterHeating" autocomplete="off" checked>
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioHeatWaterHeating">3</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioWaterHeating"
+                                            id="climateModeRadioHeat4WaterHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioHeat4WaterHeating">4</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioWaterHeating"
+                                            id="climateModeRadioHeat5WaterHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioHeat5WaterHeating">5</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="heating-boiler-control">
+                            <div class="collapse" id="collapseClimateModes">
+                                <div class="card card-body">
+                                    <p>
+                                        <i class="fa-solid fa-house-fire fa-xl"></i>
+                                    </p>
+                                    <div class="btn-group" role="group" aria-label="Climate Mode Radio Buttons">
+                                        <input type="radio" class="btn-check" name="climateModeRadioHeatingHeating"
+                                            id="climateModeRadioCoolHeatingHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioCoolHeatingHeating">1</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioHeatingHeating"
+                                            id="climateModeRadioDryHeatingHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioDryHeatingHeating">2</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioHeatingHeating"
+                                            id="climateModeRadioHeatHeatingHeating" autocomplete="off" checked>
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioHeatHeatingHeating">3</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioHeatingHeating"
+                                            id="climateModeRadioHeat4HeatingHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioHeat4HeatingHeating">4</label>
+
+                                        <input type="radio" class="btn-check" name="climateModeRadioHeatingHeating"
+                                            id="climateModeRadioHeat5HeatingHeating" autocomplete="off">
+                                        <label class="btn btn-outline-dark"
+                                            for="climateModeRadioHeat5HeatingHeating">5</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>            
+            </div>
+            <button class="btn btn-secondary" id="settings-btn" data-bs-toggle="collapse"
+                data-bs-target="#collapseClimateModes" role="button" aria-expanded="false"
+                aria-controls="collapseClimateModes">
+                Settings
+            </button>
         </div>
     </div>
     <span class="divider"><i class="fa-solid fa-minus fa-rotate-90 fa-2xl"></i></span>
