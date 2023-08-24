@@ -41,7 +41,9 @@
 }
 
 #increase-temp,
-#increase-humidity {
+#increase-humidity,
+#increase-conditioning-temp,
+#increase-conditioning-speed {
   padding-bottom: 12px;
 }
 

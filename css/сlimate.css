@@ -22,9 +22,18 @@
     margin-top: 20px;
 }
 
-.climate-auto-settings {
+.climate-auto-settings,
+.climate-conditioning-settings {
     display: flex;
     gap: 20px;
+}
+
+.climate-conditioning-settings {
+    padding: 5px 0;
+}
+
+.auto-settings-description {
+    padding-top: 30px;
 }
 
 .climate-auto-mode {
@@ -47,4 +56,11 @@
     margin: 0;
     height: 25px;
     width: 25px;
+}
+
+.boiler-control-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }

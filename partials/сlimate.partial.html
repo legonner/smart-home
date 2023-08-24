@@ -27,6 +27,9 @@
                             <button class="temperature-control" id="decrease-temp"><i
                                     class="fas fa-chevron-down"></i></button>
                         </div>
+                        <div class="climate-auto-settings-description status-item">
+                            <p class="auto-settings-description">Set a comfortable temperature range</p>
+                        </div>
                         <div class="status-item" id="user-max-temperature">
                             <button class="temperature-control" id="increase-temp"><i
                                     class="fas fa-chevron-up"></i></button>
@@ -70,6 +73,37 @@
                                         id="climateModeRadioHeat" autocomplete="off">
                                     <label class="btn btn-outline-dark" for="climateModeRadioHeat">Heat</label>
                                 </div>
+                                <div class="climate-conditioning-settings">
+                                    <div class="status-item" id="user-conditioning-temp-fan">
+                                        <button class="temperature-control" id="increase-conditioning-temp">
+                                            <i class="fas fa-chevron-up"></i>
+                                        </button>
+                                        <p> <i class="fa-solid fa-temperature-half fa-2xl"></i> <span
+                                                id="user-min-temp">20</span>°C </p>
+                                        <button class="temperature-control" id="decrease-conditioning-temp">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+                                    <div class="status-item" id="user-max-temperature">
+                                        <button class="temperature-control" id="increase-conditioning-speed">
+                                            <i class="fas fa-chevron-up"></i></button>
+                                        <p> <i class="fa-solid fa-fan fa-flip-vertical fa-xl"></i> <span
+                                                id="user-max-temp">1</span> speed</p>
+                                        <button class="temperature-control" id="decrease-conditioning-speed">
+                                            <i class="fas fa-chevron-down"></i></button>
+                                    </div>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check" id="econaviCheckbox" autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="econaviCheckbox">ECONAVI</label>
+                                  
+                                    <input type="checkbox" class="btn-check" id="nanoeGCheckbox" autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="nanoeGCheckbox">NANOE-G</label>
+                                  
+                                    <input type="checkbox" class="btn-check" id="quietCheckbox" autocomplete="off">
+                                    <label class="btn btn-outline-dark" for="quietCheckbox">QUIET</label>
+                                  </div>
+                                  
                             </div>
                         </div>
                     </div>
@@ -92,7 +126,7 @@
                         <div class="heating-boiler-control">
                             <div class="collapse" id="collapseClimateModes">
                                 <div class="card card-body">
-                                    <p>
+                                    <p class="boiler-control-icon">
                                         <i class="fa-solid fa-faucet fa-xl"></i>
                                     </p>
                                     <div class="btn-group" role="group" aria-label="Climate Mode Radio Buttons">
@@ -127,7 +161,7 @@
                         <div class="heating-boiler-control">
                             <div class="collapse" id="collapseClimateModes">
                                 <div class="card card-body">
-                                    <p>
+                                    <p class="boiler-control-icon">
                                         <i class="fa-solid fa-house-fire fa-xl"></i>
                                     </p>
                                     <div class="btn-group" role="group" aria-label="Climate Mode Radio Buttons">
