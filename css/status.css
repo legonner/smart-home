@@ -43,7 +43,9 @@
 #increase-temp,
 #increase-humidity,
 #increase-conditioning-temp,
-#increase-conditioning-speed {
+#increase-conditioning-speed,
+#increase-min-temp,
+#increase-max-temp {
   padding-bottom: 12px;
 }
 
