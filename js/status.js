@@ -94,7 +94,7 @@ function calculateTotalLightEnergyUsage() {
 
 function increaseEnergyUsage() {
     calculateTotalLightEnergyUsage();
-    currentEnergyConsumption = lightEnergyUsage + boilerEnergyUsage + conditionerEnergyUsage;
+    currentEnergyConsumption = lightEnergyUsage + boilerEnergyUsage + Math.max(conditionerEnergyUsage, 0);
     currentEnergyUsage += currentEnergyConsumption;
     updateEnergyUsageDisplay();
 }
