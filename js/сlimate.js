@@ -1,27 +1,32 @@
-const autoMinTempElement = document.getElementById('user-min-temp');
-const autoMaxTempElement = document.getElementById('user-max-temp');
-const userConditioningCurrentTempElement = document.getElementById('user-conditioning-current-temp');
-const userConditioningCurrentSpeedElement = document.getElementById('user-conditioning-current-speed');
-const autoIncreaseMinTempButton = document.getElementById('increase-min-temp');
-const autoDecreaseMinTempButton = document.getElementById('decrease-min-temp');
-const autoIncreaseMaxTempButton = document.getElementById('increase-max-temp');
-const autoDecreaseMaxTempButton = document.getElementById('decrease-max-temp');
-const increaseConditioningTempButton = document.getElementById('increase-conditioning-temp');
-const decreaseConditioningTempButton = document.getElementById('decrease-conditioning-temp');
-const increaseConditioningSpeedButton = document.getElementById('increase-conditioning-speed');
-const decreaseConditioningSpeedButton = document.getElementById('decrease-conditioning-speed');
-const climateControlButton = document.getElementById('climateControlButton');
-const conditionRadioOn = document.getElementById('climateRadio1');
-const conditionRadioOff = document.getElementById('climateRadio2');
-const boilerRadioOn = document.getElementById('climateRadio3');
-const boilerRadioOff = document.getElementById('climateRadio4');
+const getElement = id => document.getElementById(id);
 
+const autoMinTempElement = getElement('user-min-temp');
+const autoMaxTempElement = getElement('user-max-temp');
+const userConditioningCurrentTempElement = getElement('user-conditioning-current-temp');
+const userConditioningCurrentSpeedElement = getElement('user-conditioning-current-speed');
+const autoIncreaseMinTempButton = getElement('increase-min-temp');
+const autoDecreaseMinTempButton = getElement('decrease-min-temp');
+const autoIncreaseMaxTempButton = getElement('increase-max-temp');
+const autoDecreaseMaxTempButton = getElement('decrease-max-temp');
+const increaseConditioningTempButton = getElement('increase-conditioning-temp');
+const decreaseConditioningTempButton = getElement('decrease-conditioning-temp');
+const increaseConditioningSpeedButton = getElement('increase-conditioning-speed');
+const decreaseConditioningSpeedButton = getElement('decrease-conditioning-speed');
+const climateControlButton = getElement('climateControlButton');
+const conditionRadioOn = getElement('climateRadio1');
+const conditionRadioOff = getElement('climateRadio2');
+const boilerRadioOn = getElement('climateRadio3');
+const boilerRadioOff = getElement('climateRadio4');
+const climateAutoModeButton = getElement('btn-check-auto-mode');
+const temperatureElement = getElement('temperature');
+const conditionModeCool = getElement('climateModeRadioCool');
+const conditionModeHeat = getElement('climateModeRadioHeat');
+
+let currentTemperature = parseFloat(temperatureElement.textContent);
 let autoMinTemperature = 20.0;
 let autoMaxTemperature = 24.0;
-let autoAveTemperature = calculateAverageTemperature();
-
 let userConditioningTemp = 20.0;
-let userConditioningSpeed = 1;
+let userConditioningSpeed = 3;
 
 function calculateAverageTemperature() {
   const averageTemp = (autoMinTemperature + autoMaxTemperature) / 2;
@@ -34,7 +39,6 @@ autoMaxTempElement.textContent = autoMaxTemperature.toFixed(1);
 function updateAutoTemperatures() {
   autoMinTempElement.textContent = autoMinTemperature.toFixed(1);
   autoMaxTempElement.textContent = autoMaxTemperature.toFixed(1);
-  autoAveTemperature = Math.floor((autoMinTemperature + autoMaxTemperature) / 2);
 }
 
 function updateConditioningTempAndSpeed() {
@@ -42,7 +46,49 @@ function updateConditioningTempAndSpeed() {
   userConditioningCurrentSpeedElement.textContent = userConditioningSpeed;
 }
 
+let temperatureChangeInterval = null;
+
+function startTemperatureChangeInterval() {
+  if (temperatureChangeInterval === null) {
+    const intervalTime = 7000 / userConditioningSpeed;
+    temperatureChangeInterval = setInterval(changeTemperature, intervalTime);
+  }
+}
+
+function stopTemperatureChangeInterval() {
+  clearInterval(temperatureChangeInterval);
+  temperatureChangeInterval = null;
+}
+
+function updateCurrentTemperature() {
+  currentTemperature = parseFloat(temperatureElement.textContent);
+}
+
+setInterval(updateCurrentTemperature, 1000);
+
+function changeTemperature() {
+  if (!conditionRadioOn.checked) {
+    stopTemperatureChangeInterval();
+    conditionRadioOn.checked = false;
+    updateClimateControlButton();
+    return;
+  }
+
+  if (currentTemperature < userConditioningTemp) {
+    conditionModeHeat.checked = true;
+    currentTemperature += 0.5;
+    temperatureElement.textContent = currentTemperature.toFixed(1);
+  } else if (currentTemperature > userConditioningTemp) {
+    conditionModeCool.checked = true;
+    currentTemperature -= 0.5;
+    temperatureElement.textContent = currentTemperature.toFixed(1);
+  } else {
+    updateClimateControlButton();
+  }
+}
+
 updateConditioningTempAndSpeed();
+updateAutoTemperatures();
 
 autoIncreaseMinTempButton.addEventListener('click', () => {
   autoMinTemperature += 0.5;
@@ -78,6 +124,7 @@ increaseConditioningSpeedButton.addEventListener('click', () => {
   if (userConditioningSpeed < 7) {
     userConditioningSpeed++;
     updateConditioningTempAndSpeed();
+    startTemperatureChangeInterval();
   }
 });
 
@@ -85,6 +132,7 @@ decreaseConditioningSpeedButton.addEventListener('click', () => {
   if (userConditioningSpeed > 1) {
     userConditioningSpeed--;
     updateConditioningTempAndSpeed();
+    startTemperatureChangeInterval();
   }
 });
 
@@ -92,26 +140,19 @@ function updateClimateControlButton() {
   const conditionRadioChecked = conditionRadioOn.checked;
   const boilerRadioChecked = boilerRadioOn.checked;
 
-  if (conditionRadioChecked && boilerRadioChecked) {
+  let iconHtml = '';
+  if (conditionRadioChecked) {
+    iconHtml += '<i class="fa-solid fa-fan fa-spin fa-xl"></i>';
+  }
+  if (boilerRadioChecked) {
+    iconHtml += '<i class="fa-solid fa-fire fa-shake fa-xl"></i>';
+  }
+
+  if (iconHtml) {
     climateControlButton.innerHTML = `
       Climate control
       <span class="badge text-bg-primary">
-        <i class="fa-solid fa-fan fa-spin fa-xl"></i>
-        <i class="fa-solid fa-fire fa-shake fa-xl"></i>
-      </span>
-    `;
-  } else if (conditionRadioChecked) {
-    climateControlButton.innerHTML = `
-      Climate control
-      <span class="badge text-bg-primary">
-        <i class="fa-solid fa-fan fa-spin fa-xl"></i>
-      </span>
-    `;
-  } else if (boilerRadioChecked) {
-    climateControlButton.innerHTML = `
-      Climate control
-      <span class="badge text-bg-primary">
-        <i class="fa-solid fa-fire fa-shake fa-xl"></i>
+        ${iconHtml}
       </span>
     `;
   } else {
@@ -122,7 +163,20 @@ function updateClimateControlButton() {
   }
 }
 
-conditionRadioOn.addEventListener('click', updateClimateControlButton);
+conditionRadioOn.addEventListener('click', () => {
+  updateClimateControlButton();
+  if (conditionRadioOn.checked) {
+    startTemperatureChangeInterval();
+  } else {
+    stopTemperatureChangeInterval();
+  }
+});
+
 conditionRadioOff.addEventListener('click', updateClimateControlButton);
 boilerRadioOn.addEventListener('click', updateClimateControlButton);
 boilerRadioOff.addEventListener('click', updateClimateControlButton);
+
+// Initialize DOM values on page load
+updateConditioningTempAndSpeed();
+updateAutoTemperatures();
+updateClimateControlButton();

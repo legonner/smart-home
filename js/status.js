@@ -15,8 +15,9 @@ const weatherIcons = {
 };
 
 const weatherWidget = document.getElementById('weather-widget');
+const temperatureElement = document.getElementById('temperature');
 
-let currentTemperature = 22;
+let currentTemperature = parseFloat(temperatureElement.textContent);
 let currentHumidity = 55;
 let currentEnergyUsage = 150;
 let currentWaterUsage = 200;
@@ -194,6 +195,13 @@ updateEnergyConsumptionDisplay();
 
 setInterval(updateEnergyConsumptionDisplay, 500);
 setInterval(increaseEnergyUsage, 2000);
+setInterval(() => {
+    const newTemperature = parseFloat(temperatureElement.textContent);
+    if (!isNaN(newTemperature)) {
+        currentTemperature = newTemperature;
+        updateTemperatureDisplay();
+    }
+}, 2000);
 
 updateCheckboxLabel('btn-check-alarm', '.usage-alarm .btn', 'Security alarm system <i class="fa-solid fa-shield"></i>', 'Security alarm system <i class="fa-regular fa-bell-slash"></i>', 'btn-outline-success', 'btn-outline-secondary');
 updateCheckboxLabel('btn-check-flood', '.usage-flood .btn', 'Flood sensor <i class="fa-regular fa-circle-check"></i>', 'Flood sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
