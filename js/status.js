@@ -26,6 +26,28 @@ let lightEnergyUsage = 0;
 let boilerEnergyUsage = 0;
 let conditionerEnergyUsage = 0;
 
+const mainCheckbox = document.getElementById('flexSwitchCheckChecked');
+const alarmCheckbox = document.getElementById('btn-check-alarm');
+const floodCheckbox = document.getElementById('btn-check-flood');
+const fireCheckbox = document.getElementById('btn-check-fire');
+const houseLockCheckbox = document.getElementById('btncheck1'); 
+
+mainCheckbox.addEventListener('change', function() {
+    const isChecked = this.checked;
+
+    if (!isChecked) {
+        floodCheckbox.disabled = true;
+        fireCheckbox.disabled = true;
+        alarmCheckbox.checked = true;
+        houseLockCheckbox.checked = true;
+    } else {
+        floodCheckbox.disabled = false;
+        fireCheckbox.disabled = false;
+        alarmCheckbox.checked = false;
+        houseLockCheckbox.checked = false;
+    }
+});
+
 function updateValue(elementId, value) {
     const element = document.getElementById(elementId);
     element.textContent = value;
@@ -203,6 +225,5 @@ setInterval(() => {
     }
 }, 2000);
 
-updateCheckboxLabel('btn-check-alarm', '.usage-alarm .btn', 'Security alarm system <i class="fa-solid fa-shield"></i>', 'Security alarm system <i class="fa-regular fa-bell-slash"></i>', 'btn-outline-success', 'btn-outline-secondary');
 updateCheckboxLabel('btn-check-flood', '.usage-flood .btn', 'Flood sensor <i class="fa-regular fa-circle-check"></i>', 'Flood sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
 updateCheckboxLabel('btn-check-fire', '.usage-fire .btn', 'Fire sensor <i class="fa-regular fa-circle-check"></i>', 'Fire sensor <i class="fa-regular fa-circle-xmark"></i>', 'btn-outline-success', 'btn-outline-secondary');
