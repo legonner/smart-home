@@ -47,6 +47,7 @@ function handleRemoveButtonClick(button) {
     updateBadgeAndCounter();
 }
 
+// Function to handle applying changes
 function handleApplyButtonClick() {
     const elementsToToggle = document.querySelectorAll('.remove-light-item, .edit-button');
 
@@ -97,12 +98,13 @@ function addLightElement(container, lightName) {
 }
 
 function handleAddButtonClick(container) {
-    const newLightName = prompt('Enter new element name');
+    const newLightName = prompt('Enter new light element name');
     if (newLightName) {
         addLightElement(container, newLightName);
     }
 }
 
+// Function to toggle the edit mode
 function toggleEdit() {
     const elementsToToggle = document.querySelectorAll('.d-none');
 
