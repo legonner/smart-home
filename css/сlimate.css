@@ -12,7 +12,7 @@
 
 .climate-controls {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 20px;
 }
 
@@ -26,9 +26,6 @@
 .climate-conditioning-settings {
     display: flex;
     gap: 20px;
-}
-
-.climate-conditioning-settings {
     padding: 5px 0;
 }
 
@@ -38,24 +35,11 @@
 
 .climate-auto-mode {
     display: flex;
-    justify-content: center !important;
-    align-items: center; 
-    gap: 5px; 
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
     margin-left: 40px;
     margin-bottom: 20px;
-}
-
-.climate-controls {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-}
-
-#auto-mode-settings {
-    padding: 0;
-    margin: 0;
-    height: 25px;
-    width: 25px;
 }
 
 .boiler-control-icon {

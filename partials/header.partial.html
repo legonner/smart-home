@@ -1,66 +1,84 @@
 <nav class="navbar navbar-expand-md bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img class="header__logo" src="./images/main.png" alt="Logo" width="40"
-        height="40"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul id="container" class="navbar-nav me-auto mb-2 mb-sm-0">
-        <li class="nav-item">
-            <a id="smart-home-link" class="nav-link active" aria-current="page" href="#">Smart Home</a>
-        </li>
-        <li class="nav-item nav-underline">
-            <a data-block="bathroom" class="nav-link" href="#">Bathroom</a>
-        </li>
-        <li class="nav-item nav-underline">
-            <a data-block="hall" class="nav-link" href="#">Hall</a>
-        </li>
-        <li class="nav-item nav-underline">
-            <a data-block="bedroom" class="nav-link" href="#">Bedroom</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa-solid fa-plus fa-sm" style="color: #1f62d6;"></i></a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
-        <div class="status-swich">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-            <label class="form-check-label" for="flexSwitchCheckChecked"><i
-                class="fa-solid fa-house-chimney-user fa-lg"></i></label>
-          </div>
-        </div>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Automation
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> |
-                Exit home</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-person-walking-arrow-loop-left"></i> | Return
-                home</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#" style="color: blue;">Add new</a></li>
+      <a class="navbar-brand" href="index.html">
+          <img class="header__logo" src="./images/main.png" alt="Logo" width="40" height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul id="container" class="navbar-nav me-auto mb-2 mb-sm-0">
+              <li class="nav-item">
+                  <a id="smart-home-link" class="nav-link active" aria-current="page" href="#">Smart Home</a>
+              </li>
+              <li class="nav-item nav-underline">
+                  <a data-block="bathroom" class="nav-link" href="#">Bathroom</a>
+              </li>
+              <li class="nav-item nav-underline">
+                  <a data-block="hall" class="nav-link" href="#">Hall</a>
+              </li>
+              <li class="nav-item nav-underline">
+                  <a data-block="bedroom" class="nav-link" href="#">Bedroom</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-plus fa-sm" style="color: #1f62d6;"></i></a>
+              </li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-regular fa-user fa-xl"></i> Admin
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Authorization</a></li>
-            <li><a class="dropdown-item" href="#">Registration</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#" style="color: red;">Log out</a></li>
+          <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+              <div class="status-swich">
+                  <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                      <label class="form-check-label" for="flexSwitchCheckChecked">
+                          <i class="fa-solid fa-house-chimney-user fa-lg"></i>
+                      </label>
+                  </div>
+              </div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Automation
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a class="dropdown-item" href="#">
+                              <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> | Exit home
+                          </a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="#">
+                              <i class="fa-solid fa-person-walking-arrow-loop-left"></i> | Return home
+                          </a>
+                      </li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="#" style="color: blue;">Add new</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa-regular fa-user fa-xl"></i> Admin
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a class="dropdown-item" href="#">Authorization</a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="#">Registration</a>
+                      </li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="#" style="color: red;">Log out</a>
+                      </li>
+                  </ul>
+              </li>
           </ul>
-        </li>
-      </ul>
-    </div>
+      </div>
   </div>
 </nav>
